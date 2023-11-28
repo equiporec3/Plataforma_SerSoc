@@ -1,0 +1,121 @@
+DROP DATABASE IF EXISTS biblioteca;
+CREATE DATABASE biblioteca;
+
+use biblioteca;
+
+-- Definición de la tabla categorias
+DROP TABLE IF EXISTS categorias;
+CREATE TABLE categorias (
+  id_categoria INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  name_categoria VARCHAR(64) NOT NULL
+);
+
+-- Definición de la tabla usuarios
+DROP TABLE IF EXISTS usuarios;
+CREATE TABLE usuarios (
+  id_usuario INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  nombre VARCHAR(64) NOT NULL,
+  apellidos VARCHAR(64) NOT NULL,
+  email VARCHAR(64) NOT NULL,
+  password VARCHAR(255) NOT NULL,
+  rol ENUM('0', '1') NOT NULL,
+  id_categoria_permiso INT,
+  FOREIGN KEY (id_categoria_permiso) REFERENCES categorias(id_categoria)
+);
+
+
+-- Definición de la tabla archivos
+DROP TABLE IF EXISTS archivos;
+CREATE TABLE archivos (
+  id_archivo INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  name_archivo VARCHAR(64) NOT NULL,
+  ruta VARCHAR(128) NOT NULL,
+  date_upload DATE NOT NULL,
+  id_usuario INT NOT NULL,
+  id_categoria INT NOT NULL, -- Agregar campo para el ID de categoría
+  FOREIGN KEY(id_usuario) REFERENCES usuarios(id_usuario) ON DELETE CASCADE ON UPDATE CASCADE,
+  FOREIGN KEY(id_categoria) REFERENCES categorias(id_categoria) ON DELETE CASCADE ON UPDATE CASCADE
+);
+
+
+CREATE TABLE permisos (
+  id_permiso INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  id_usuario INT NOT NULL,
+  id_categoria INT NOT NULL,
+  permiso_lectura BOOLEAN NOT NULL DEFAULT 0,
+  permiso_edicion BOOLEAN NOT NULL DEFAULT 0,
+  permiso_eliminacion BOOLEAN NOT NULL DEFAULT 0,
+  FOREIGN KEY (id_usuario) REFERENCES usuarios(id_usuario) ON DELETE CASCADE ON UPDATE CASCADE,
+  FOREIGN KEY (id_categoria) REFERENCES categorias(id_categoria) ON DELETE CASCADE ON UPDATE CASCADE
+);
+
+-- Agregar datos de ejemplo en la tabla "categorias"
+INSERT INTO categorias (name_categoria)
+VALUES
+  ('Subproceso Desarrollo de Colecciones'),
+  ('Organización Documental'),
+  ('Inventarios'),
+  ('Recursos de Información en Línea'),
+  ('Información General'),
+  ('Estadísticas Circulación'),
+  ('Alfabetización Informacional'),
+  ('Egresados'),
+  ('Convenio Ceneval y Tesistas'),
+  ('Morosos'),
+  ('Certificado de No Adeudo Bibliotecario'),
+  ('Tesis'),
+  ('Préstamo Interbibliotecario'),
+  ('Búsqueda de Citas'),
+  ('Recuperación de Artículos'),
+  ('TURNITIN'),
+  ('Servicios de Extensión'),
+  ('Página Web'), 
+  ('Repositorio de Acceso Abierto (Tesis)'),
+  ('Repositorio de Acceso Abierto (Comunidades)'),
+  ('Administración Financiera'),
+  ('Redes Sociales'),
+  ('Inventario Equipo de Cómputo'),
+  ('Capacitación'),
+  ('Ambiente para la Operación de Procesos'),
+  ('Evaluación al Desempeño');
+
+
+
+
+-- Agregar datos de ejemplo en la tabla "usuarios"
+INSERT INTO usuarios (nombre, apellidos, email, password, rol)
+VALUES
+  ('Usuario1', 'Apellido1', 'usuario1@example.com', 'contrasena1', 0),
+  ('Usuario2', 'Apellido2', 'usuario2@example.com', 'contrasena1', 0),
+  ('Admin1', 'AdminApellido1', 'admin1@example.com', 'adminpass1', 1),
+  ('Admin2', 'AdminApellido2', 'admin2@example.com', 'adminpass2', 1);
+
+
+
+-- Asignar permisos a usuarios en categorías
+-- Permiso de lectura (1) y edición (1) para Usuario1 en Categoría 1
+-- Permiso de lectura (1) para Usuario1 en Categoría 2
+-- Permiso de eliminación (1) para Admin1 en Categoría 3
+INSERT INTO permisos (id_usuario, id_categoria, permiso_lectura, permiso_edicion, permiso_eliminacion)
+VALUES
+  (1, 1, 1, 1, 0),
+  (1, 2, 1, 0, 0),
+  (3, 3, 0, 0, 1);
+
+-- Agregar datos de ejemplo en la tabla "archivos"
+-- Archivos subidos por Usuario1 en Categoría 1
+INSERT INTO archivos (name_archivo, ruta, date_upload, id_usuario, id_categoria)
+VALUES
+  ('Archivo1', '/ruta/archivo1.pdf', '2023-10-09', 1, 1),
+  ('Archivo2', '/ruta/archivo2.doc', '2023-10-10', 1, 1);
+
+-- Archivos subidos por Usuario2 en Categoría 2
+INSERT INTO archivos (name_archivo, ruta, date_upload, id_usuario, id_categoria)
+VALUES
+  ('Archivo3', '/ruta/archivo3.txt', '2023-10-11', 2, 2);
+
+26 subprocesos
+Especializados 
+Subproceso de Apoyo
+
+SELECT * FROM usuarios;

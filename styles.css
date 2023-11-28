@@ -1,0 +1,195 @@
+/* styles.css */
+
+/* Estilos para el encabezado */
+header {
+    background-color: #003B5C;
+    color: #00B5E2;
+    padding: 10px;
+    text-align: center;
+}
+
+select {
+    background-color: #000000;
+    color: #ffffff;
+    font-size: 16px;
+    width: 200px;  /* Ancho de la lista desplegable */
+    height: 30px;  /* Altura de la lista desplegable */
+}
+
+.header-content {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+}
+
+.header-text {
+    margin-left: 20px; /* Ajusta el espacio entre la imagen y el texto según tus preferencias */
+}
+
+.header-text h3 {
+    font-size: 24px;
+    margin: 0;
+}
+
+/* Estilos para la imagen del logo */
+header img {
+    max-width: 123px; /* Ajusta el tamaño de la imagen según tus preferencias */
+    height: auto;
+}
+
+/* Estilos para el banner de imagen */
+#banner {
+    background-image: url("Imagenes/bannerBiblioteca.png");
+    background-size: cover;
+    background-position: center center; /* Centra la imagen horizontal y verticalmente */
+    height: 300px;
+}
+
+/* Estilos para la sección de acceso */
+#acceso {
+    background-color: #DCEEFF;
+    padding: 20px;
+    text-align: center;
+}
+
+/* Estilos para la sección de fondo */
+/* Estilos para el footer */
+footer {
+    background-color: #003B5C;
+    color: #00B5E2;
+    padding: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.footer-column {
+    flex-basis: calc(25% - 20px); /* Divide el footer en cuatro columnas con espacio entre ellas */
+    margin-right: 20px;
+    text-align: left;
+    color: #00B5E2;
+    text-decoration: none;
+}
+
+.footer-column ul li a {
+    color: #00B5E2; /* Cambia el color de los enlaces a #00B5E2 */
+    text-decoration: none; /* Elimina el subrayado de hipervínculo */
+}
+
+.footer-column h3 {
+    font-size: 15px;
+    margin-bottom: 10px;
+    color: #00B5E2;
+}
+
+.footer-column ul {
+    list-style-type: disc;
+    font-size: 15px;
+    padding: 0;
+    color: #00B5E2;
+}
+
+.footer-column li {
+    font-size: 15px;
+    margin-bottom: 5px;
+    color: #00B5E2;
+    text-decoration: none;
+}
+
+
+
+
+
+/*formato para botón de mostrar contraseña*/
+.input-container {
+    position: relative;
+}
+
+#mostrarContrasena {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    background: transparent;
+    border: none;
+}
+
+.boton {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    text-decoration: none;
+    border: 1px solid #007bff;
+    border-radius: 4px;
+  }
+  
+  .boton:hover {
+    background-color: #0056b3;
+  }
+
+  
+
+
+
+
+
+  /* Contenido de styles.css */
+#acceso {
+    width: 300px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+}
+
+form {
+    text-align: center;
+}
+
+#inputEmail,
+#inputPass,
+button[type="submit"],
+.boton {
+    margin-bottom: 10px;
+}
+
+.input-container {
+    position: relative;
+}
+
+#mostrarContrasena {
+    position: absolute;
+    right: 5px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+}
+
+
+
+
+
+#menu {
+    display: flex;
+    justify-content: space-between;
+    background-color: #333; /* Color de fondo de la barra de menú */
+    padding: 10px; /* Espaciado interno para mayor legibilidad */
+}
+
+#menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+
+#menu li {
+    margin-right: 10px; /* Espaciado entre elementos de la lista */
+}
+
+#menu a {
+    text-decoration: none;
+    color: white; /* Color del texto en los enlaces */
+}

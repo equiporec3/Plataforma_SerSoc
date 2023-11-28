@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Subir Archivo a Categoría Inventarios</title>
+</head>
+<meta charset="UTF-8">
+<body>
+    <h1>Subir Archivo a la Categoría Inventarios</h1>
+    <form action="procesar_subida.php" method="post" enctype="multipart/form-data">
+        <input type="hidden" name="categoria" value="inventarios">
+        <label for="archivo">Seleccione un archivo:</label>
+        <input type="file" name="archivo" id="archivo" accept=".pdf, .doc, .txt">
+        <input type="submit" value="Subir Archivo">
+    </form>
+</body>
+</html>
